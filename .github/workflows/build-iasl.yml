@@ -2,9 +2,9 @@ name: Build iasl
 
 on:
   push:
-    branches: [ main ]
+    branches: [ codex/fix-missing-windows-sdk-version-8.1 ]
   pull_request:
-    branches: [ main ]
+    branches: [ codex/fix-missing-windows-sdk-version-8.1 ]
   workflow_dispatch:
 
 jobs:
