@@ -156,7 +156,6 @@
 #define _COMPONENT          DT_COMPILER
         ACPI_MODULE_NAME    ("dtcompile")
 
-static char                 VersionString[9];
 
 
 /* Local prototypes */
@@ -328,7 +327,6 @@ DtInitialize (
     AslGbl_RootTable = NULL;
     AslGbl_SubtableStack = NULL;
 
-    sprintf (VersionString, "%X", (UINT32) ACPI_CA_VERSION);
     return;
 }
 
@@ -350,33 +348,12 @@ static void
 DtInsertCompilerIds (
     DT_FIELD                *FieldList)
 {
-    DT_FIELD                *Next;
-    UINT32                  i;
-
-
     /*
-     * Don't insert current compiler ID if requested. Used for compiler
-     * debug/validation only.
+     * Intentionally do nothing. Leaving the compiler ID and version
+     * untouched avoids overriding any existing values from the input
+     * table.
      */
-    if (AslGbl_UseOriginalCompilerId)
-    {
-        return;
-    }
-
-    /* Walk to the Compiler fields at the end of the header */
-
-    Next = FieldList;
-    for (i = 0; i < 7; i++)
-    {
-        Next = Next->Next;
-    }
-
-    Next->Value = ASL_CREATOR_ID;
-    Next->Flags = DT_FIELD_NOT_ALLOCATED;
-
-    Next = Next->Next;
-    Next->Value = VersionString;
-    Next->Flags = DT_FIELD_NOT_ALLOCATED;
+    (void) FieldList;
 }
 
 
