@@ -19,9 +19,10 @@ generate/msvc2017/AcpiXtractDebug
 generate/msvc2017/Examples
 generate/msvc2017/ExamplesDebug
 generate/msvc2017/*.l.h
-generate/msvc2017/*.l.c
-generate/msvc2017/*.y.h
-generate/msvc2017/*.y.c
+
+# Pre-generated lexer and parser sources for MSVC builds are tracked,
+# so the corresponding ignore rules for *.l.c, *.y.c, and *.y.h have
+# been removed.
 generate/msvc2017/*.y.output
 generate/msvc2017/.vs
 generate/msvc2017/*.y
