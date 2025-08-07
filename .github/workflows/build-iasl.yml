@@ -16,7 +16,7 @@ jobs:
       - name: Build iasl.exe
         run: msbuild generate\\msvc2017\\AslCompiler.vcxproj /p:Configuration=Release /p:Platform=Win32
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: iasl
           path: libraries/iasl.exe
