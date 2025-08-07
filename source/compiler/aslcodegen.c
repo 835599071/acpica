@@ -600,13 +600,11 @@ CgWriteTableHeader (
     Child = Child->Asl.Next;
     AslGbl_TableHeader.OemRevision = (UINT32) Child->Asl.Value.Integer;
 
-    /* Compiler ID */
-
-    ACPI_COPY_NAMESEG (AslGbl_TableHeader.AslCompilerId, ASL_CREATOR_ID);
-
-    /* Compiler version */
-
-    AslGbl_TableHeader.AslCompilerRevision = ACPI_CA_VERSION;
+    /*
+     * Leave Compiler ID and version intact. These fields should not be
+     * overridden by the assembler so that any original values are
+     * preserved.
+     */
 
     /* Table length. Checksum zero for now, will rewrite later */
 
