@@ -1,0 +1,22 @@
+name: Build iasl
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: microsoft/setup-msbuild@v1
+      - name: Build iasl.exe
+        run: msbuild generate\\msvc2017\\AslCompiler.vcxproj /p:Configuration=Release /p:Platform=Win32
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: iasl
+          path: libraries/iasl.exe
